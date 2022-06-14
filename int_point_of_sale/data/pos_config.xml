@@ -1,0 +1,17 @@
+<odoo>
+    <data noupdate="0">
+        <!--        Create new Point of Sale    -->
+        <record id="new_point_of_sale" model="pos.config">
+            <field name="name">New Shop</field>
+            <field name="module_pos_hr" eval="True" />
+            <!-- <field name="company_id" ref="pci_company"/> -->
+        </record>
+
+        <!-- Create new Company to set Region & Currency -->
+        <record id="pci_company" model="res.company">
+            <field name="name">Port Cities Indonesia</field>
+            <field name="currency_id" ref="base.IDR"/>
+        </record>
+
+    </data>
+</odoo>

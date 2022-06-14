@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+    
+    <templates id="template" extend_id="point_of_sale.template">
+        
+        <t t-extend="Chrome">
+            <!-- Change The Logo -->
+            <t t-jquery=".pos .pos-topheader .pos-branding" t-operation='replace'>
+                <div class="pos-branding">
+                    <img class="pos-logo" src="/int_point_of_sale/static/src/img/portcitieslogo.png" alt="Logo" />
+                    <!-- Add The Cashier Selector inline with the logo and The Salesperson Selector -->
+                    <div class="cashier">
+                        Cashier:<br />
+                        <span class="placeholder-UsernameWidget" />
+                    </div>
+                    <div class="salesperson">
+                        Salesperson:<br />
+                        <span class="placeholder-SalespersonWidget" />
+                    </div>
+                </div>
+            </t>
+
+            <!-- Erase The Cashier Name from rightheader -->
+            <t t-jquery=".pos .pos-rightheader .oe_status" t-operation='replace' />
+        </t>
+
+        <!-- Add The Popup Salesperson Widget -->
+        <t t-name="SalespersonWidget">
+            <span class="get_salesperson">
+                <t t-esc="widget.get_name()" />
+            </span>
+        </t>
+
+        <!-- Add Clear Current Order button -->
+        <t t-name="ClearOrder">
+            <div class="control-button">
+                <i class="fa fa-trash"></i>
+                <span> </span>
+                <span>Clear Current Order</span>
+            </div>
+        </t>
+
+        <!-- Display The Product Image -->
+        <t t-extend="Orderline">
+            <t t-jquery=".product-name" t-operation='before'>
+                <span class="product-img">
+                    <img t-att-src='widget.get_product_image_url(line.get_product())' alt="Product image"/>
+                </span>
+            </t>
+        </t>
+
+        <!-- Change The Receipt Content -->
+        <t t-extend="OrderReceipt">
+            <t t-jquery=".pos-receipt .pos-receipt-logo" t-operation='replace'>
+                <t t-if='receipt.company.logo'>
+                    <img class="pos-receipt-logo" src="/int_point_of_sale/static/src/img/portcitieslogo.png" alt="Logo" />
+                </t>
+            </t>
+
+            <t t-jquery=".pos-receipt .pos-receipt-contact" t-operation='replace'>
+                <div class='pos-receipt-contact'>
+                    <t t-if='receipt.company'>
+                        <div class='company'>
+                            <div> <t t-esc='receipt.company.name' /></div>
+                        </div>
+                        <div class='company-phone'>
+                            <div>Phone: <t t-esc='receipt.company.phone' /></div>
+                        </div>
+                    </t>
+                    <t t-if='receipt.cashier'>
+                        <div class='cashier'>
+                            <div>Cashier: <t t-esc='receipt.cashier' /></div>
+                        </div>
+                    </t>
+                    <t t-if='receipt.salesperson'>
+                        <div class='salesperson'>
+                            <div>Salesperson: <t t-esc='receipt.salesperson' /></div>
+                        </div>
+                    </t>
+                </div>
+            </t>
+        </t>
+
+    </templates>

@@ -1,0 +1,96 @@
+/* Change the theme of the Point of Sale */
+.pos .pos-topheader{
+    background:darkblue;
+}
+.pos .mode-button.selected-mode {
+    background:darkblue;
+}
+.pos .order .orderline.selected {
+    background:darkblue;
+}
+
+/* Adjust the positioning so the leftpane is not too crowded */
+.pos .pos-branding{
+    width: 500px;
+}
+.pos .pos-rightheader{
+    left: 500px;
+}
+.pos .leftpane{
+    width: 500px;
+}
+.pos .rightpane{
+    left: 500px;
+}
+.pos .numpad {
+    border: 1px solid;
+}
+
+/* Set The Logo to stay on the left side */
+.pos .pos-branding .pos-logo{
+    float: left;
+}
+
+/* Set The Salesperson Selector to the right side of pos-branding */
+.pos .pos-branding .salesperson{
+    float:right; 
+    color:rgba(255,255,255,0.4);
+    padding:4px;
+    line-height:20px;
+    font-size:20px;
+    vertical-align:middle;
+    font-style:italic;
+    cursor:pointer;
+    margin-right: 15px;
+}
+
+/* Set The Cashier Selector to the left side of The Salesperson Selector */
+.pos .pos-branding .cashier{
+    float:left; 
+    color:rgba(255,255,255,0.4);
+    padding:4px;
+    line-height: 20px;
+    font-size: 20px;
+    vertical-align:middle;
+    font-style:italic;
+    cursor:pointer;
+    margin-left: 15px;
+}
+.pos .pos-branding .username{
+    float: left;
+    color:rgba(255,255,255,0.4);
+    font-size: 20px;
+    line-height: 20px;
+}
+
+/* To set position of orderlines value */
+.pos .order .orderline{
+    height: 160px;
+}
+.pos .order .orderline .product-img{
+    float: left;
+    width: fit-content;
+}
+.pos .order .orderline .product-name{
+    float: left;
+    width: fit-content;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+.pos .order .orderline .price{
+    width: fit-content;
+    float: right;
+    margin-top: 10px;
+}
+.pos .order .orderline .info-list{
+    margin-left: 20px;
+    width: fit-content;
+    float: left;
+}
+.pos .order .orderline.selected .product-name{
+    color:white;
+}
+.pos .order .orderline.selected .price{
+    color:white;
+}

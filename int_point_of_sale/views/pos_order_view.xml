@@ -1,0 +1,40 @@
+<odoo>
+    <!-- Add the salesperson of POS in the form view -->
+    <record id="view_pos_pos_form_new" model="ir.ui.view">
+        <field name="name">pos.order.form.new</field>
+        <field name="model">pos.order</field>
+        <field name="inherit_id" ref="point_of_sale.view_pos_pos_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='extra']//field[@name='company_id']" position="after">
+                <field name="salesperson_id" readonly="1" />
+            </xpath>
+        </field>
+    </record>
+    <!-- Add the salesperson of POS in the tree view -->
+    <record id="view_pos_order_tree_new" model="ir.ui.view">
+        <field name="name">pos.order.tree.new</field>
+        <field name="model">pos.order</field>
+        <field name="inherit_id" ref="point_of_sale.view_pos_order_tree" />
+        <field name="arch" type="xml">
+            <xpath expr="//tree//field[@name='amount_total']" position="before">
+                <field string="Salesperson" name="salesperson_id" />
+            </xpath>
+        </field>
+    </record>
+    <!-- Create a new search filter of salesperson -->
+    <record id="view_pos_order_filter_new" model="ir.ui.view">
+        <field name="name">pos.order.list.select.new</field>
+        <field name="model">pos.order</field>
+        <field name="inherit_id" ref="point_of_sale.view_pos_order_filter" />
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='posted']" position="after">
+                <separator />
+                <filter string="Salesperson: Marc Demo" name="salesperson_id" domain="[('salesperson_id', '=', 'Marc Demo')]"/>
+            </xpath>
+            <xpath expr="//filter[@name='customer']" position="before">
+                <filter string="Salesperson" name="salesperson_id" domain="[]" context="{'group_by': 'salesperson_id'}"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,18 @@
+<odoo>
+    <!-- Create a new search filter -->
+    <record id="view_report_pos_order_search_new" model="ir.ui.view">
+        <field name="name">report.pos.order.search.new</field>
+            <field name="model">report.pos.order</field>
+            <field name="inherit_id" ref="point_of_sale.view_report_pos_order_search" />
+            <field name="arch" type="xml">
+                <xpath expr="//filter[@name='not_invoiced']" position="after">
+                    <separator />
+                    <filter string="Salesperson: Mitchell Admin" name="salesperson_id" domain="[('salesperson_id','=',('Mitchell Admin'))]"/>
+                </xpath>
+                <xpath expr="//group//filter[@name='User']" position="after">
+                    <field string="Salesperson" name="salesperson_id" domain="[]" context="{'group_by': 'salesperson_id'}"/>
+                </xpath>
+            </field>
+    </record>
+
+</odoo>
